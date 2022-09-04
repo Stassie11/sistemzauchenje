@@ -39,4 +39,4 @@ urlpatterns = [
     path("logout.html", views.logout_request, name="logout"),
     path("quiz.html", views.quiz, name="quiz"),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

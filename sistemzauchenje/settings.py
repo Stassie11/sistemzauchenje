@@ -124,8 +124,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'sistemzauchenje/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = '/static/img/'
-MEDIA_URL = 'static/'
 
 
 # Default primary key field type
