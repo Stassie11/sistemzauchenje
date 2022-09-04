@@ -13,32 +13,30 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.template.defaulttags import url
+
 from django.urls import path
 from django.views.static import serve
-
 
 from italian import views
 from . import settings
 
 urlpatterns = [
-path('admin/', admin.site.urls),
-path('',views.index, name="index"),
-path('index.html',views.index, name="index"),
-path('contact.html',views.contact, name="contact"),
-path('entertainment.html',views.entertainment, name="entertainment"),
-path('first.html',views.first, name="first"),
-path('second.html',views.second, name="second"),
-path('third.html',views.third, name="third"),
-path('start.html',views.start, name="start"),
-path('lectures.html',views.lectures, name="lectures"),
-path('test.html',views.test, name="test"),
-path("signup.html", views.register_request, name="signup"),
-path("login.html", views.login_request, name="login"),
-path("logout.html", views.logout_request, name= "logout"),
-path("quiz.html", views.quiz, name= "quiz"),
+    path('admin/', admin.site.urls),
+    path('', views.index, name="index"),
+    path('index.html', views.index, name="index"),
+    path('contact.html', views.contact, name="contact"),
+    path('entertainment.html', views.entertainment, name="entertainment"),
+    path('first.html', views.first, name="first"),
+    path('second.html', views.second, name="second"),
+    path('third.html', views.third, name="third"),
+    path('start.html', views.start, name="start"),
+    path('lectures.html', views.lectures, name="lectures"),
+    path('test.html', views.test, name="test"),
+    path("signup.html", views.register_request, name="signup"),
+    path("login.html", views.login_request, name="login"),
+    path("logout.html", views.logout_request, name="logout"),
+    path("quiz.html", views.quiz, name="quiz"),
 
-url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}),
-url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
